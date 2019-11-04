@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { HeadersInterceptor} from './headers.interceptor';
+import { fakeBackendProvider} from './fake-backend';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +18,8 @@ import { AppComponent } from './app.component';
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass:HeadersInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass:HeadersInterceptor, multi: true },
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })

@@ -33,28 +33,37 @@
 
 
   <!-- Next Steps -->
-  <h2>Aplicación iniciada</h2>
-  <p>De Clic en el siguiente boton para ver el ejemplo</p>
-
-  <input type="hidden" #selection>
+  <h2>Autenticacion Post</h2>
+  <p>Se envian 2 parametros: username: 'test' y password: 'test'</p>
 
   <div class="card-container">
-
-    <div class="card card-small" (click)="selection.value = 'build'" tabindex="0">
+    <div class="card card-small" (click)="initInterceptorPost(1)" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-
-      <span>Iniciar...</span>
+      <span>Datos correctos</span>
     </div>
+    <div class="card card-small" (click)="initInterceptorPost(0)" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Datos incorrectos</span>
+    </div>
+  </div>
 
+  <h2>Consulta de usuarios Get</h2>
+  <p>De Clic en el siguiente boton para ver el ejemplo</p>
+
+  <div class="card-container">
+    <div class="card card-small" (click)="initInterceptorGet(1)" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Datos correctos</span>
+    </div>
+    <div class="card card-small" (click)="initInterceptorGet(0)" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Datos incorrectos</span>
+    </div>
   </div>
 
   <!-- Terminal -->
-  <div class="terminal" [ngSwitch]="selection.value">
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
-      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
-      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
-      <pre *ngSwitchCase="'test'">ng test</pre>
-      <pre *ngSwitchCase="'build'">ng build --prod</pre>
+  <div class="terminal">
+      <pre>{{MsgConsole}}</pre>
   </div>
 
   <!-- Footer -->

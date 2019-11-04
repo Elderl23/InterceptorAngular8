@@ -8,12 +8,8 @@ export class HeadersInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let ContentType = 'application/json; charset=utf-8';
-        let authorization = '';
-
-        if (sessionStorage.getItem('currentUser') !== null) {
-            authorization = `Token  ${sessionStorage.getItem('currentUser').replace(/['"]+/g, '')}`;
-        }
-
+        let authorization = `Basic ${btoa('WebApp' + ':' + 'WebApp')}`;
+        
         request = request.clone({
             setHeaders: {
                 Authorization: authorization,
