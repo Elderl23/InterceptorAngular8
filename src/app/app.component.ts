@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
@@ -7,8 +8,24 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  angForm: FormGroup;
   private MsgConsole = '';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private fb: FormBuilder) {
+    this.createForm();
+  }
+
+  createForm() {
+    this.angForm = this.fb.group({
+      name: ["", Validators.required]
+    });
+  }
+
+  onSubmit() {
+    if (this.angForm.valid) {
+      console.log(this.angForm.value);
+    } else {
+      alert("FILL ALL FIELDS");
+    }
   }
 
   initInterceptorPost(type) {

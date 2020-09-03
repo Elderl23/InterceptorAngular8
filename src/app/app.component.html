@@ -66,6 +66,37 @@
       <pre>{{MsgConsole}}</pre>
   </div>
 
+
+
+
+  <form [formGroup]="angForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label class="center-block"
+        >Name:
+        <input class="form-control" formControlName="name" />
+      </label>
+
+
+    </div>
+    <div
+      *ngIf="
+        angForm.controls['name'].invalid &&
+        (angForm.controls['name'].dirty || angForm.controls['name'].touched)
+      "
+      class="alert alert-danger"
+    >
+      <div *ngIf="angForm.controls['name'].errors.required">
+        Name is required.
+      </div>
+    </div>
+    <button type="submit">
+      Submit
+    </button>
+  </form>
+
+
+
+
   <!-- Footer -->
   <footer>
       Tutorial creado por:&nbsp;
